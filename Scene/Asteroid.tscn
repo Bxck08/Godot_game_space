@@ -20,10 +20,6 @@ shape = SubResource( 1 )
 position = Vector2( 0, -0.5 )
 scale = Vector2( 1, 1.05 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-
 [connection signal="area_entered" from="." to="." method="_on_Asteroid_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Asteroid_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

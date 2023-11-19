@@ -51,7 +51,12 @@ func shoot_ctrl():
 	#new_bullet.look_at(get_global_mouse_position())
 	$Timer.set_wait_time(time_bullet)
 	$Timer.start()
-	
+
+func handle_collision_with_asteroid():
+	hp -= 1
+	if hp == 0:
+		get_tree().change_scene("res://Scene/Menu.tscn")
+		queue_free()
 
 func _on_Timer_timeout():
 	can_shoot = true

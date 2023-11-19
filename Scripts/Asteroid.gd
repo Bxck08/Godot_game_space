@@ -15,7 +15,6 @@ func _physics_process(delta):
 	position += velocity * speed * delta 
 	
 func _on_VisibilityNotifier2D_screen_exited():
-	$Timer.start()
 	queue_free()
 
 
@@ -27,7 +26,5 @@ func _on_Asteroid_area_entered(area):
 
 func _on_Asteroid_body_entered(body):
 	if body.is_in_group("Player"):
+		body.handle_collision_with_asteroid()
 		queue_free()
-		body.hp -= 1
-		if  body.hp == 0:
-			body.queue_free()

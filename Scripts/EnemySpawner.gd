@@ -32,10 +32,9 @@ func _on_Timer_timeout():
 				i.spawn_delay_counter += 1
 			else:
 				i.spawn_delay_counter = 0
-				var new_enemy = i.get_enemy()
+				var new_enemy_scene = i.get_enemy()
 				var counter = 0
 				while counter < i.enemy_num:
-					var new_enemy_scene = i.get_enemy()
 					var new_enemy_instance = new_enemy_scene.instance() 
 					new_enemy_instance.global_position = get_random_position()
 					add_child(new_enemy_instance)
