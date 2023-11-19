@@ -15,6 +15,7 @@ func _physics_process(delta):
 	position += velocity * speed * delta 
 	
 func _on_VisibilityNotifier2D_screen_exited():
+	$Timer.start()
 	queue_free()
 
 
@@ -30,6 +31,3 @@ func _on_Asteroid_body_entered(body):
 		body.hp -= 1
 		if  body.hp == 0:
 			body.queue_free()
-		
-		
-	
