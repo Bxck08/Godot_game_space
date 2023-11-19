@@ -2,7 +2,11 @@ extends KinematicBody2D
 
 export (PackedScene) var Shoot
 
-var hp = 3
+signal healthChanged
+
+var maxHealth = 3
+var currentHealth : int = maxHealth
+
 var time_bullet = 0.3
 var can_shoot = true
 const max_speed = 200
@@ -26,6 +30,7 @@ func _input(event):
 func get_input():
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	
 	return input.normalized()
 
 
@@ -48,6 +53,7 @@ func shoot_ctrl():
 	get_tree().call_group("Level",'add_child',new_bullet)
 	new_bullet.velocity = transform.x * speed_bullet	
 	new_bullet.position = $Position2D.global_position
+	can_shoot = false
 	#new_bullet.look_at(get_global_mouse_position())
 	$Timer.set_wait_time(time_bullet)
 	$Timer.start()
@@ -55,3 +61,13 @@ func shoot_ctrl():
 
 func _on_Timer_timeout():
 	can_shoot = true
+
+			
+		
+func hurt():
+	currentHealth -= 1
+	emit_signal("healthChanged")
+	if currentHealth == 0:
+		queue_free()
+
+

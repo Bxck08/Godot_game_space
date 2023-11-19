@@ -26,10 +26,10 @@ func _on_Asteroid_area_entered(area):
 
 func _on_Asteroid_body_entered(body):
 	if body.is_in_group("Player"):
+		body.hurt()
 		queue_free()
-		body.hp -= 1
-		if  body.hp == 0:
-			body.queue_free()
+		
+		
 		
 		
 	
