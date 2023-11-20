@@ -68,6 +68,5 @@ func hurt():
 	currentHealth -= 1
 	emit_signal("healthChanged")
 	if currentHealth == 0:
+		get_tree().change_scene("res://Scene/Menu.tscn")
 		queue_free()
-
-

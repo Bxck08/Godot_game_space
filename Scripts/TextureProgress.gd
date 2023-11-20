@@ -1,14 +1,8 @@
 extends TextureProgress
 
-
-export (PackedScene) var playerScene
-
-var player
+onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready():
-	player = playerScene.instance()
-	get_tree().call_group("Level",'add_child',player)
-
 	player.connect("healthChanged", self, "update")
 	update()
 

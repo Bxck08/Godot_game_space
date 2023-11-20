@@ -30,6 +30,4 @@ func _on_Asteroid_body_entered(body):
 		queue_free()
 		
 		
-		
-		
 	
